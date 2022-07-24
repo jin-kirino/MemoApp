@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct AddMemoView: View {
+//    struct MemoData {
+//            // ない時もある「なし」と表示する
+//            var memo: String?
+//            var date: Date?
+//    }// MemoData
+
+    @State var newMemo: String = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("メモの追加")
+        }
     }
 }
 

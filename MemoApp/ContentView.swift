@@ -9,9 +9,10 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
-    @State private var memo: String = ""
+    // Listで表示
     @State private var memos: [String] = []
+    // AddMemoViewを管理
+    @State private var addMemoView: Bool = false
     // Buttonのグラデーションの配色の設定
     let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -54,7 +55,8 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button {
-                            print("tappped")
+                            // AddMemoViewを表示
+                            addMemoView.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .frame(width: 60, height: 60)
@@ -64,6 +66,9 @@ struct ContentView: View {
                                 .clipShape(Circle())
                         }// Button
                         .padding(.trailing, 10)
+                        .sheet(isPresented: $addMemoView) {
+                            AddMemoView()
+                        }
                     }// HStack
                 }// VStack
             }// ZStack
