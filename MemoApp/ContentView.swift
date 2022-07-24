@@ -12,6 +12,9 @@ struct ContentView: View {
 
     @State private var memo: String = ""
     @State private var memos: [String] = []
+    // Buttonのグラデーションの配色の設定
+    let graddientView = AngularGradient(
+        gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
@@ -48,6 +51,20 @@ struct ContentView: View {
                         }// ForEach
                         .onDelete(perform: removeRows)
                     }// List
+                    HStack {
+                        Spacer()
+                        Button {
+                            print("tappped")
+                        } label: {
+                            Image(systemName: "plus")
+                                .frame(width: 60, height: 60)
+                                .imageScale(.large)
+                                .background(graddientView)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
+                        }// Button
+                        .padding(.trailing, 10)
+                    }// HStack
                 }// VStack
             }// ZStack
             .navigationBarTitle("メモの一覧")
