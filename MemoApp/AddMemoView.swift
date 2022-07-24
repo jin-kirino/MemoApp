@@ -15,12 +15,57 @@ struct AddMemoView: View {
 //    }// MemoData
 
     @State var newMemo: String = ""
+    // キーボード表示
+    @FocusState private var focusedField: Bool
+    // DatePickerの管理
+    @State private var slectionDate = Date()
+    // Buttonのグラデーションの配色の設定
+    let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
+
     var body: some View {
         VStack {
-            Text("メモの追加")
+            HStack {
+                Text("メモの追加")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.trailing)
+                    .padding([.top, .leading])
+                Spacer()
+            }// HStack
+            TextEditor(text: $newMemo)
+                .focused($focusedField)
+            // 区切り線
+            Divider()
+            HStack {
+                Text("いつのメモ？")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .multilineTextAlignment(.trailing)
+                    .padding([.top, .leading])
+                Spacer()
+            }// HStack
+            DatePicker("", selection: $slectionDate, displayedComponents: .date)
+                // タイトルいらないから
+                .labelsHidden()
+                .foregroundColor(.blue)
+                .padding()
+            Button {
+
+            } label: {
+                Text("＋ 追加")
+            }
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            .foregroundColor(.white)
+            .background(graddientView)
+            .cornerRadius(10)
+            .padding()
+        }// VStack
+        .onTapGesture {
+            focusedField = true
         }
-    }
-}
+    }// body
+}// AddMemoView
 
 struct AddMemoView_Previews: PreviewProvider {
     static var previews: some View {
