@@ -45,7 +45,7 @@ struct ContentView: View {
             ZStack {
                 VStack {
                     Spacer()
-                    if memos == [] {
+                    if memos.isEmpty {
                         Text("なし")
                             .font(.title)
                             .fontWeight(.bold)
