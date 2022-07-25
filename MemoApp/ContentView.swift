@@ -43,32 +43,36 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.gray
-                    .ignoresSafeArea()
                 VStack {
-                    List {
-                        ForEach(memos, id: \.self) { memo in
-                            Text("\(memo)")
-                        }// ForEach
-                        .onDelete(perform: removeRows)
-                    }// List
+                    if memos == [] {
+                        Text("なし")
+                            .font(.title)
+                            .fontWeight(.bold)
+                    } else {
+                        List {
+                            ForEach(memos, id: \.self) { memo in
+                                Text("\(memo)")
+                            }// ForEach
+                            .onDelete(perform: removeRows)
+                        }// List
+                    }// if else
                     HStack {
                         Spacer()
-                        Button {
-                            // AddMemoViewを表示
-                            addMemoView.toggle()
-                        } label: {
-                            Image(systemName: "plus")
-                                .frame(width: 60, height: 60)
-                                .imageScale(.large)
-                                .background(graddientView)
-                                .foregroundColor(.white)
-                                .clipShape(Circle())
-                        }// Button
-                        .padding(.trailing, 10)
-                        .sheet(isPresented: $addMemoView) {
-                            AddMemoView()
-                        }
+                            Button {
+                                // AddMemoViewを表示
+                                addMemoView.toggle()
+                            } label: {
+                                Image(systemName: "plus")
+                                    .frame(width: 60, height: 60)
+                                    .imageScale(.large)
+                                    .background(graddientView)
+                                    .foregroundColor(.white)
+                                    .clipShape(Circle())
+                            }// Button
+                            .padding(.trailing, 10)
+                            .sheet(isPresented: $addMemoView) {
+                                AddMemoView()
+                            }
                     }// HStack
                 }// VStack
             }// ZStack
