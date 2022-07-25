@@ -44,6 +44,7 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 VStack {
+                    Spacer()
                     if memos == [] {
                         Text("なし")
                             .font(.title)
@@ -56,6 +57,7 @@ struct ContentView: View {
                             .onDelete(perform: removeRows)
                         }// List
                     }// if else
+                    Spacer()
                     HStack {
                         Spacer()
                             Button {
