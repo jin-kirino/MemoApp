@@ -16,7 +16,7 @@ struct ContentView: View {
     // Buttonのグラデーションの配色の設定
     let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
-
+    
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
         let appearance = UINavigationBarAppearance()
@@ -29,54 +29,48 @@ struct ContentView: View {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-
+    
     // 被管理オブジェクトコンテキスト(ManagedObjectContext)の取得
     // データベースから引っ張ってきたコードデータ、必ずMOCと紐づいている
-//    @Environment(\.managedObjectContext) private var viewContext
+    //    @Environment(\.managedObjectContext) private var viewContext
     // データベースよりデータを取得
-//    @FetchRequest(
-        // key:日付、ascending: true→昇順（新しいのが下）で並べ替える
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-//        animation: .default)
-//    private var items: FetchedResults<Item>
+    //    @FetchRequest(
+    // key:日付、ascending: true→昇順（新しいのが下）で並べ替える
+    //        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+    //        animation: .default)
+    //    private var items: FetchedResults<Item>
 
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    Spacer()
-                    if memos.isEmpty {
-                        Text("なし")
-                            .font(.title)
-                            .fontWeight(.bold)
-                    } else {
-                        List {
-                            ForEach(memos, id: \.self) { memo in
-                                Text("\(memo)")
-                            }// ForEach
-                            .onDelete(perform: removeRows)
-                        }// List
-                    }// if else
-                    Spacer()
-                    HStack {
-                        Spacer()
-                            Button {
-                                // AddMemoViewを表示
-                                addMemoView.toggle()
-                            } label: {
-                                Image(systemName: "plus")
-                                    .frame(width: 60, height: 60)
-                                    .imageScale(.large)
-                                    .background(graddientView)
-                                    .foregroundColor(.white)
-                                    .clipShape(Circle())
-                            }// Button
-                            .padding(.trailing, 10)
-                            .sheet(isPresented: $addMemoView) {
-                                AddMemoView()
-                            }
-                    }// HStack
-                }// VStack
+            ZStack(alignment: .bottomTrailing) {
+                if memos.isEmpty {
+                    Text("なし")
+                        .font(.title)
+                        .fontWeight(.bold)
+                } else {
+                    List {
+                        ForEach(memos, id: \.self) { memo in
+                            Text("\(memo)")
+                        }// ForEach
+                        .onDelete(perform: removeRows)
+                    }// List
+                }// if else
+                Button {
+                    // AddMemoViewを表示
+                    addMemoView.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .frame(width: 60, height: 60)
+                        .imageScale(.large)
+                        .background(graddientView)
+                        .foregroundColor(.white)
+                        .clipShape(Circle())
+                }// Button
+                .padding(.trailing, 20.0)
+                .padding(.bottom, 30.0)
+                .sheet(isPresented: $addMemoView) {
+                    AddMemoView()
+                }// sheet
             }// ZStack
             .navigationBarTitle("メモの一覧")
         }// NavigationView
