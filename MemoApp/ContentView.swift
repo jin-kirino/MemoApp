@@ -10,7 +10,8 @@ import CoreData
 
 struct ContentView: View {
     // Listで表示
-    @State private var memos: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u"]
+    @State private var memos: [String] =
+    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u"]
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // Buttonのグラデーションの配色の設定
@@ -42,7 +43,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack {
                 if memos.isEmpty {
                     Text("なし")
                         .font(.title)
@@ -55,22 +56,28 @@ struct ContentView: View {
                         .onDelete(perform: removeRows)
                     }// List
                 }// if else
-                Button {
-                    // AddMemoViewを表示
-                    addMemoView.toggle()
-                } label: {
-                    Image(systemName: "plus")
-                        .frame(width: 60, height: 60)
-                        .imageScale(.large)
-                        .background(graddientView)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
-                }// Button
-                .padding(.trailing, 20.0)
-                .padding(.bottom, 30.0)
-                .sheet(isPresented: $addMemoView) {
-                    AddMemoView()
-                }// sheet
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button {
+                            // AddMemoViewを表示
+                            addMemoView.toggle()
+                        } label: {
+                            Image(systemName: "plus")
+                                .frame(width: 60, height: 60)
+                                .imageScale(.large)
+                                .background(graddientView)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
+                        }// Button
+                        .padding(.trailing, 20.0)
+                        .padding(.bottom, 30.0)
+                        .sheet(isPresented: $addMemoView) {
+                            AddMemoView()
+                        }// sheet
+                    }
+                }
             }// ZStack
             .navigationBarTitle("メモの一覧")
         }// NavigationView
