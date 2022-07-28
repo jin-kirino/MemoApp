@@ -10,13 +10,13 @@ import CoreData
 
 struct ContentView: View {
     // Listで表示
-    @State private var memos: [String] = []
+    @State private var memos: [String] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u"]
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // Buttonのグラデーションの配色の設定
     let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
-    
+
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
         let appearance = UINavigationBarAppearance()
@@ -29,7 +29,7 @@ struct ContentView: View {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
-    
+
     // 被管理オブジェクトコンテキスト(ManagedObjectContext)の取得
     // データベースから引っ張ってきたコードデータ、必ずMOCと紐づいている
     //    @Environment(\.managedObjectContext) private var viewContext
