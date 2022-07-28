@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct AddMemoView: View {
-//    struct MemoData {
-//            // ない時もある「なし」と表示する
-//            var memo: String?
-//            var date: Date?
-//    }// MemoData
+    struct MemoData {
+        // ない時もある「なし」と表示する
+        var memo: String?
+        var date: Date?
+    }// MemoData
 
     @State var newMemo: String = ""
     // キーボード表示
@@ -50,9 +50,11 @@ struct AddMemoView: View {
                 .foregroundColor(.blue)
                 .padding()
             Button {
-
+                // 初期画面にメモを追加
+                // シートを閉じる
             } label: {
                 Text("＋ 追加")
+                    .frame(width: 300, height: 10)
             }
             .frame(minWidth: 0, maxWidth: .infinity)
             .padding()
@@ -61,6 +63,7 @@ struct AddMemoView: View {
             .cornerRadius(10)
             .padding()
         }// VStack
+        // キーボードを表示
         .onTapGesture {
             focusedField = true
         }
