@@ -19,6 +19,8 @@ struct AddMemoView: View {
     @FocusState private var focusedField: Bool
     // DatePickerの管理
     @State private var slectionDate = Date()
+    // 環境変数の取得
+    @Environment(\.dismiss) var dismiss
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
@@ -52,6 +54,7 @@ struct AddMemoView: View {
             Button {
                 // 初期画面にメモを追加
                 // シートを閉じる
+                dismiss()
             } label: {
                 Text("＋ 追加")
                     .frame(width: 300, height: 10)
