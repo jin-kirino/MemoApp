@@ -51,7 +51,11 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(memos, id: \.self) { memo in
-                            Text("\(memo)")
+                            Button {
+                                addMemoView.toggle()
+                            } label: {
+                                Text("\(memo)")
+                            }
                         }// ForEach
                         .onDelete(perform: removeRows)
                     }// List
