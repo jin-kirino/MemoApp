@@ -42,49 +42,56 @@ struct ContentView: View {
     //    private var items: FetchedResults<Item>
 
     var body: some View {
-        ZStack {
-            if memos.isEmpty {
-                Text("なし")
-                    .font(.title)
-                    .fontWeight(.bold)
-            } else {
-                List {
-                    ForEach(memos, id: \.self) { memo in
+        NavigationView {
+            ZStack {
+                if memos.isEmpty {
+                    ZStack {
+                        Color("backgroundColor")
+                            .ignoresSafeArea()
+                        Text("なし")
+                            .font(.title)
+                            .fontWeight(.bold)
+                    }
+                } else {
+                    List {
+                        ForEach(memos, id: \.self) { memo in
+                            Button {
+                                addMemoView.toggle()
+                            } label: {
+                                Text("\(memo)")
+                            }
+                        }// ForEach
+                        .onDelete(perform: removeRows)
+                    }// List
+                    .listStyle(.plain)
+                }// if else
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
                         Button {
+                            // AddMemoViewを表示
                             addMemoView.toggle()
                         } label: {
-                            Text("\(memo)")
-                        }
-                    }// ForEach
-                    .onDelete(perform: removeRows)
-                }// List
-                .listStyle(.plain)
-            }// if else
-            VStack {
-                Spacer()
-                HStack {
-                    Spacer()
-                    Button {
-                        // AddMemoViewを表示
-                        addMemoView.toggle()
-                    } label: {
-                        Image(systemName: "plus")
-                            .frame(width: 70, height: 70)
-                            .imageScale(.large)
-                            .background(graddientView)
-                            .foregroundColor(.white)
-                            .clipShape(Circle())
-                    }// Button
-                    .padding(.trailing, 20.0)
-                    .padding(.bottom, 10.0)
-                    .sheet(isPresented: $addMemoView) {
-                        AddMemoView()
-                    }// sheet
-                }// HStack
-            }// VStack
-        }// ZStack
+                            Image(systemName: "plus")
+                                .frame(width: 70, height: 70)
+                                .imageScale(.large)
+                                .background(graddientView)
+                                .foregroundColor(.white)
+                                .clipShape(Circle())
+                        }// Button
+                        .padding(.trailing, 20.0)
+                        .padding(.bottom, 10.0)
+                        .sheet(isPresented: $addMemoView) {
+                            AddMemoView()
+                        }// sheet
+                    }// HStack
+                }// VStack
+            }// ZStack
+            .navigationTitle("メモの一覧")
+        }// NagvigationView
     }// body
-    
+
     // 行を削除する関数
     func removeRows(at offsets: IndexSet) {
         memos.remove(atOffsets: offsets)
