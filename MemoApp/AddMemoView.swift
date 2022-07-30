@@ -57,14 +57,12 @@ struct AddMemoView: View {
                 dismiss()
             } label: {
                 Text("＋ 追加")
-                    .frame(width: 300, height: 10)
+                    .frame(width: 300)
+                    .padding()
             }
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .padding()
             .foregroundColor(.white)
             .background(graddientView)
             .cornerRadius(10)
-            .padding()
         }// VStack
         // キーボードを表示
         .onTapGesture {
