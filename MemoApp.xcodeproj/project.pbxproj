@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		FF4751CA2888DBB9000C1A08 /* MemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */; };
 		FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751CB2888DBB9000C1A08 /* ContentView.swift */; };
-		FF4751CE2888DBBC000C1A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4751CD2888DBBC000C1A08 /* Assets.xcassets */; };
 		FF4751D12888DBBC000C1A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4751D02888DBBC000C1A08 /* Preview Assets.xcassets */; };
 		FF4751D32888DBBC000C1A08 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751D22888DBBC000C1A08 /* Persistence.swift */; };
 		FF4751D62888DBBC000C1A08 /* MemoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF4751D42888DBBC000C1A08 /* MemoApp.xcdatamodeld */; };
 		FF4751FF288CC002000C1A08 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751FE288CC002000C1A08 /* AddMemoView.swift */; };
+		FF4752272894C4F9000C1A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4752262894C4F9000C1A08 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FF4751C62888DBB9000C1A08 /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAppApp.swift; sourceTree = "<group>"; };
 		FF4751CB2888DBB9000C1A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		FF4751CD2888DBBC000C1A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4751D02888DBBC000C1A08 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF4751D22888DBBC000C1A08 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		FF4751D52888DBBC000C1A08 /* MemoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemoApp.xcdatamodel; sourceTree = "<group>"; };
 		FF4751FE288CC002000C1A08 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
+		FF4752262894C4F9000C1A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +59,10 @@
 			children = (
 				FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */,
 				FF4751CB2888DBB9000C1A08 /* ContentView.swift */,
-				FF4751CD2888DBBC000C1A08 /* Assets.xcassets */,
 				FF4751D22888DBBC000C1A08 /* Persistence.swift */,
 				FF4751FE288CC002000C1A08 /* AddMemoView.swift */,
 				FF4751D42888DBBC000C1A08 /* MemoApp.xcdatamodeld */,
+				FF4752262894C4F9000C1A08 /* Assets.xcassets */,
 				FF4751CF2888DBBC000C1A08 /* Preview Content */,
 			);
 			path = MemoApp;
@@ -71,7 +71,15 @@
 		FF4751CF2888DBBC000C1A08 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				FF4752192894C1C7000C1A08 /* Preview Content */,
 				FF4751D02888DBBC000C1A08 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF4752192894C1C7000C1A08 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -135,8 +143,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4752272894C4F9000C1A08 /* Assets.xcassets in Resources */,
 				FF4751D12888DBBC000C1A08 /* Preview Assets.xcassets in Resources */,
-				FF4751CE2888DBBC000C1A08 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

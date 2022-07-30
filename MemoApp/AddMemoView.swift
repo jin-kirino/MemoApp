@@ -15,8 +15,6 @@ struct AddMemoView: View {
     }// MemoData
 
     @State var newMemo: String = ""
-    // キーボード表示
-    @FocusState private var focusedField: Bool
     // DatePickerの管理
     @State private var slectionDate = Date()
     // 環境変数の取得
@@ -35,7 +33,6 @@ struct AddMemoView: View {
                 Spacer()
             }// HStack
             TextEditor(text: $newMemo)
-                .focused($focusedField)
             // 区切り線
             Divider()
             HStack {
@@ -57,17 +54,14 @@ struct AddMemoView: View {
                 dismiss()
             } label: {
                 Text("＋ 追加")
-                    .frame(width: 300)
-                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50)
+                    .foregroundColor(.white)
+                    .background(graddientView)
+                    .cornerRadius(10)
             }
-            .foregroundColor(.white)
-            .background(graddientView)
-            .cornerRadius(10)
+            .padding()
         }// VStack
-        // キーボードを表示
-        .onTapGesture {
-            focusedField = true
-        }
     }// body
 }// AddMemoView
 
