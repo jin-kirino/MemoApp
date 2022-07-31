@@ -69,6 +69,7 @@ struct ContentView: View {
 //                            }// sheet
                         ForEach(memos, id: \.self) { memo in
                             Button {
+                                print("編集画面")
                                 editMemoView.toggle()
                             } label: {
                                 Text("\(memo)")
@@ -86,6 +87,7 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button {
+                            print("追加画面")
                             // AddMemoViewを表示
                             addMemoView.toggle()
                         } label: {
