@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct AddMemoView: View {
-//    struct MemoData {
-//        // ない時もある「なし」と表示する
-//        var memo: String?
-//        var date: Date?
-//    }// MemoData
+    // ContentViewに渡す配列
     @Binding var memos: [String]
     // TextEditorの内容
     @State var newMemo: String = ""
@@ -22,13 +18,6 @@ struct AddMemoView: View {
     @Environment(\.dismiss) var dismiss
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
-
-    // TextEditorの内容を配列に追加するメソッド
-    func addMemo(memo: String) -> [String] {
-        var memos: [String] = []
-        memos.append(memo)
-        return memos
-    }
 
     var body: some View {
         VStack {
@@ -59,7 +48,7 @@ struct AddMemoView: View {
                 .padding()
             Button {
                 // 初期画面にメモを追加
-                 memos = addMemo(memo: newMemo)
+                memos.append(newMemo)
                 // シートを閉じる
                 dismiss()
             } label: {
