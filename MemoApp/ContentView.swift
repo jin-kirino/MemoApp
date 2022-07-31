@@ -55,7 +55,7 @@ struct ContentView: View {
                                 Text("\(memo)")
                             }
                             .sheet(isPresented: $editMemoView) {
-                                EditMemoView()
+                                EditMemoView(memos: $memos)
                             }// sheet
                         }// ForEach
                         .onDelete(perform: removeRows)
