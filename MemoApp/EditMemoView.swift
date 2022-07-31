@@ -10,7 +10,7 @@ import SwiftUI
 struct EditMemoView: View {
     // ContentViewに渡す配列
     @Binding var memos: [String]
-    // TextEditorの内容
+    // TextEditorの内容を持ってくる
     @State var alradyMemo: String = ""
     // DatePickerの管理
     @State private var slectionDate = Date()
@@ -49,8 +49,8 @@ struct EditMemoView: View {
                 .foregroundColor(.blue)
                 .padding()
             Button {
-                // 初期画面にメモを追加
-                memos.append(alradyMemo)
+                // 編集した内容を初期画面に表示
+//                memos.append(alradyMemo)
                 // シートを閉じる
                 dismiss()
             } label: {
@@ -63,6 +63,9 @@ struct EditMemoView: View {
             }// Button
             .padding()
         }// VStack
+//        .onAppear {
+//
+//        }
     }// body
 }
 
