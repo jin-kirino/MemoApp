@@ -9,6 +9,13 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+//    struct Memo: Identifiable {
+//        let id = UUID()
+//        var memo: String
+//        var date: Date
+//    }
+//    // Listで表示
+//    @State var memos: [Memo] = []
     // Listで表示
     @State var memos: [String] = []
     // AddMemoViewを管理
@@ -48,6 +55,18 @@ struct ContentView: View {
                     }
                 } else {
                     List {
+//                        List(memos.indices) { memo in
+//                            Button {
+//                              editMemoView.toggle()
+//                            } label: {
+//                                VStack {
+//                                    Text(Memo.memo)
+//                                    Text(Memo.date, style: .date)
+//                                }
+//                            }
+//                            .sheet(isPresented: $editMemoView) {
+//                                 EditMemoView(editMemo: $memos[memo])
+//                            }// sheet
                         ForEach(memos, id: \.self) { memo in
                             Button {
                                 editMemoView.toggle()
