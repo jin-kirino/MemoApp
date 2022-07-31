@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct AddMemoView: View {
-    struct MemoData {
-        // ない時もある「なし」と表示する
-        var memo: String?
-        var date: Date?
-    }// MemoData
-
+//    struct MemoData {
+//        // ない時もある「なし」と表示する
+//        var memo: String?
+//        var date: Date?
+//    }// MemoData
+    @Binding var memos: [String]
+    // TextEditorの内容
     @State var newMemo: String = ""
     // DatePickerの管理
     @State private var slectionDate = Date()
@@ -21,6 +22,13 @@ struct AddMemoView: View {
     @Environment(\.dismiss) var dismiss
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
+
+    // TextEditorの内容を配列に追加するメソッド
+    func addMemo(memo: String) -> [String] {
+        var memos: [String] = []
+        memos.append(memo)
+        return memos
+    }
 
     var body: some View {
         VStack {
@@ -43,6 +51,7 @@ struct AddMemoView: View {
                     .padding([.top, .leading])
                 Spacer()
             }// HStack
+            // 日付を選択
             DatePicker("", selection: $slectionDate, displayedComponents: .date)
                 // タイトルいらないから
                 .labelsHidden()
@@ -50,6 +59,7 @@ struct AddMemoView: View {
                 .padding()
             Button {
                 // 初期画面にメモを追加
+                 memos = addMemo(memo: newMemo)
                 // シートを閉じる
                 dismiss()
             } label: {
@@ -59,14 +69,14 @@ struct AddMemoView: View {
                     .foregroundColor(.white)
                     .background(graddientView)
                     .cornerRadius(10)
-            }
+            }// Button
             .padding()
         }// VStack
     }// body
 }// AddMemoView
 
-struct AddMemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddMemoView()
-    }
-}
+// struct AddMemoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddMemoView(memos: )
+//    }
+// }

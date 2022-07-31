@@ -10,10 +10,13 @@ import CoreData
 
 struct ContentView: View {
     // Listで表示
-    @State private var memos: [String] = []
-    //    ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u"]
+    @State var memos: [String] = []
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
+    // EditMemoViewを管理
+    @State private var editMemoView: Bool = false
+    // 一旦メモの内容
+    @State var newMemo: String = ""
     // Buttonのグラデーションの配色の設定
     let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -31,21 +34,12 @@ struct ContentView: View {
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 
-    // 被管理オブジェクトコンテキスト(ManagedObjectContext)の取得
-    // データベースから引っ張ってきたコードデータ、必ずMOCと紐づいている
-    //    @Environment(\.managedObjectContext) private var viewContext
-    // データベースよりデータを取得
-    //    @FetchRequest(
-    // key:日付、ascending: true→昇順（新しいのが下）で並べ替える
-    //        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-    //        animation: .default)
-    //    private var items: FetchedResults<Item>
-
     var body: some View {
         NavigationView {
             ZStack {
                 if memos.isEmpty {
                     ZStack {
+                        // 自作のグレー
                         Color("backgroundColor")
                             .ignoresSafeArea()
                         Text("なし")
@@ -56,10 +50,13 @@ struct ContentView: View {
                     List {
                         ForEach(memos, id: \.self) { memo in
                             Button {
-                                addMemoView.toggle()
+                                editMemoView.toggle()
                             } label: {
                                 Text("\(memo)")
                             }
+                            .sheet(isPresented: $editMemoView) {
+                                EditMemoView()
+                            }// sheet
                         }// ForEach
                         .onDelete(perform: removeRows)
                     }// List
@@ -83,7 +80,7 @@ struct ContentView: View {
                         .padding(.trailing, 20.0)
                         .padding(.bottom, 10.0)
                         .sheet(isPresented: $addMemoView) {
-                            AddMemoView()
+                            AddMemoView(memos: $memos)
                         }// sheet
                     }// HStack
                 }// VStack
