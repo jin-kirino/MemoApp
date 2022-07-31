@@ -69,7 +69,7 @@ struct ContentView: View {
 //                            }// sheet
                         ForEach(memos, id: \.self) { memo in
                             Button {
-                                print("編集画面")
+                                print("\(memo)")
                                 editMemoView.toggle()
                             } label: {
                                 Text("\(memo)")
