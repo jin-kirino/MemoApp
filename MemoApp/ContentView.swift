@@ -24,6 +24,8 @@ struct ContentView: View {
     @State private var editMemoView: Bool = false
     // 一旦メモの内容
     @State var newMemo: String = ""
+    // リストのメモ内容を格納
+    @State var editMemo: String = ""
     // Buttonのグラデーションの配色の設定
     let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -71,11 +73,12 @@ struct ContentView: View {
                             Button {
                                 print("\(memo)")
                                 editMemoView.toggle()
+                                editMemo = memo
                             } label: {
                                 Text("\(memo)")
                             }
                             .sheet(isPresented: $editMemoView) {
-                                EditMemoView(memos: $memos, alradyMemo: newMemo)
+                                EditMemoView(memos: $memos, editMemo: $editMemo)
                             }// sheet
                         }// ForEach
                         .onDelete(perform: removeRows)

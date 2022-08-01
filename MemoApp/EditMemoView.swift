@@ -11,9 +11,10 @@ struct EditMemoView: View {
     // ContentViewに渡す配列
     @Binding var memos: [String]
     // TextEditorの内容を持ってくる
-    @State var alradyMemo: String = ""
+    @Binding var editMemo: String
     // DatePickerの管理
     @State private var slectionDate = Date()
+
     // 環境変数の取得
     @Environment(\.dismiss) var dismiss
     // Buttonのグラデーションの配色の設定
@@ -30,7 +31,7 @@ struct EditMemoView: View {
                 Spacer()
             }// HStack
             // メモの内容を表示させておく
-            TextEditor(text: $alradyMemo)
+            TextEditor(text: $editMemo)
             // 区切り線
             Divider()
             HStack {
@@ -63,9 +64,6 @@ struct EditMemoView: View {
             }// Button
             .padding()
         }// VStack
-//        .onAppear {
-//
-//        }
     }// body
 }
 
