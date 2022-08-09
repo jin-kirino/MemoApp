@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AddMemoView: View {
     // ContentViewに渡す配列
-    @Binding var memos: [String]
+    @Binding var memos: [Memo]
     // TextEditorの内容
     @State var newMemo: String = ""
     // DatePickerの管理
     @State private var slectionDate = Date()
     // 環境変数の取得
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
