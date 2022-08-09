@@ -8,27 +8,32 @@
 import SwiftUI
 import CoreData
 
+// メモの内容と日付を保持する構造体
+struct Memo: Identifiable {
+    let id = UUID()
+    var memo: String?
+    var date: Date?
+}
+
 struct ContentView: View {
-//    struct Memo: Identifiable {
-//        let id = UUID()
-//        var memo: String
-//        var date: Date
-//    }
-//    // Listで表示
-//    @State var memos: [Memo] = []
-    // Listで表示
-    @State var memos: [String] = []
+
+    // Memo構造体をまとめる配列
+    @State private var memos: [Memo] = []
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // EditMemoViewを管理
     @State private var editMemoView: Bool = false
     // 一旦メモの内容
-    @State var newMemo: String = ""
-    // リストのメモ内容を格納
-    @State var editMemo: String = ""
+    @State private var newMemo: String = ""
+    // すでにリストにあるメモ内容を管理
+    @State private var editMemo: String = ""
+    // リストの日付を格納
+    @State private var editDate: Date = Date()
     // Buttonのグラデーションの配色の設定
-    let graddientView = AngularGradient(
+    private let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
+    
+
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
@@ -84,6 +89,9 @@ struct ContentView: View {
                         .onDelete(perform: removeRows)
                     }// List
                     .listStyle(.plain)
+                    .toolbar {
+                        EditButton()
+                    }
                 }// if else
                 VStack {
                     Spacer()
