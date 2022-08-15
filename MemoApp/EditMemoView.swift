@@ -10,25 +10,17 @@
  struct EditMemoView: View {
      @Environment(\.managedObjectContext) private var context
      @Environment(\.presentationMode) var presentation
-     @State private var content: String = ""
-     @State private var date: Date = Date()
+     @State private var content: String
+     @State private var date: Date
      private var memo: Memo
 
      // イニシャライザ
-     init(memo: Memo) {
+     init(memo: Memo, content: String, date: Date) {
          self.memo = memo
-//         self.content = memo.content ?? ""
-//         self.date = memo.date ?? Date()
+         _content = State(initialValue: content)
+         _date = State(initialValue: date)
      }
-//    // ContentViewに渡す配列
-//    @Binding var memos: [Memo]
-//    // TextEditorの内容を持ってくる
-//    @Binding var editMemo: String
-//    // DatePickerの管理
-//    @Binding private var slectionDate: Date
-//
-//    // 環境変数の取得
-//    @Environment(\.dismiss) private var dismiss
+
     // Buttonのグラデーションの配色の設定
     private let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
@@ -86,8 +78,8 @@
      }// saveMemo
 }// EditMemoView
 
- struct EditMemoView_Previews: PreviewProvider {
-    static var previews: some View {
-        EditMemoView(memo: Memo())
-    }
- }
+// struct EditMemoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        EditMemoView(memo: Memo(), content: content, date: date)
+//    }
+// }

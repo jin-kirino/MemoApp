@@ -17,18 +17,10 @@ struct ContentView: View {
         animation: .default
     ) private var fetchedMemoList: FetchedResults<Memo>
 
-//    // Memo構造体をまとめる配列
-//    @State private var memos: [Memo] = []
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // EditMemoViewを管理
     @State private var editMemoView: Bool = false
-//    // 一旦メモの内容
-//    @State private var newMemo: String = ""
-//    // すでにリストにあるメモ内容を管理
-//    @State private var editMemo: String = ""
-//    // リストの日付を格納
-//    @State private var editDate: Date = Date()
     // Buttonのグラデーションの配色の設定
     private let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -56,27 +48,18 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(fetchedMemoList) { memo in
-                            Button {
-                                editMemoView.toggle()
-                            } label: {
+                            NavigationLink(destination: EditMemoView(memo: memo, content: memo.content ?? "", date: memo.date ?? Date())) {
                                 VStack {
-                                    Text("\(memo.content!)")
-                                    Text("\(memo.date!)")
-                                }
-                            }
-                            .sheet(isPresented: $editMemoView) {
-                                EditMemoView(memo: memo)
-                            }
-                            VStack {
-                                Text(memo.content ?? "")
-                                    .font(.title)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(2)
-                                Text(memo.stringDateAt)
-                                    .font(.caption)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .lineLimit(1)
-                            }// VStack
+                                    Text(memo.content ?? "")
+                                        .font(.title)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(2)
+                                    Text(memo.stringDateAt)
+                                        .font(.caption)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .lineLimit(1)
+                                }// VStack
+                            }// NavigationLink
                         }// ForEach
                         .onDelete(perform: deleteMemo)
                     }// List
