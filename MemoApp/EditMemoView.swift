@@ -4,19 +4,31 @@
 //
 //  Created by 神　樹里乃 on 2022/07/30.
 //
+//
+ import SwiftUI
 
-import SwiftUI
+ struct EditMemoView: View {
+     @Environment(\.managedObjectContext) private var context
+     @Environment(\.presentationMode) var presentation
+     @State private var content: String = ""
+     @State private var date: Date = Date()
+     private var memo: Memo
 
-struct EditMemoView: View {
-    // ContentViewに渡す配列
-    @Binding var memos: [Memo]
-    // TextEditorの内容を持ってくる
-    @Binding var editMemo: String
-    // DatePickerの管理
-    @Binding private var slectionDate: Date
-
-    // 環境変数の取得
-    @Environment(\.dismiss) private var dismiss
+     // イニシャライザ
+     init(memo: Memo) {
+         self.memo = memo
+//         self.content = memo.content ?? ""
+//         self.date = memo.date ?? Date()
+     }
+//    // ContentViewに渡す配列
+//    @Binding var memos: [Memo]
+//    // TextEditorの内容を持ってくる
+//    @Binding var editMemo: String
+//    // DatePickerの管理
+//    @Binding private var slectionDate: Date
+//
+//    // 環境変数の取得
+//    @Environment(\.dismiss) private var dismiss
     // Buttonのグラデーションの配色の設定
     private let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
@@ -31,7 +43,7 @@ struct EditMemoView: View {
                 Spacer()
             }// HStack
             // メモの内容を表示させておく
-            TextEditor(text: $editMemo)
+            TextEditor(text: $content)
             // 区切り線
             Divider()
             HStack {
@@ -44,16 +56,14 @@ struct EditMemoView: View {
             }// HStack
             // 日付を選択
             // 元々選択されていた日付を表示させておく
-            DatePicker("", selection: $slectionDate, displayedComponents: .date)
+            DatePicker("", selection: $date, displayedComponents: .date)
                 // タイトルいらないから
                 .labelsHidden()
                 .foregroundColor(.blue)
                 .padding()
             Button {
                 // 編集した内容を初期画面に表示
-//                memos.append(alradyMemo)
-                // シートを閉じる
-                dismiss()
+                saveMemo()
             } label: {
                 Text("＋ 追加")
                     .frame(maxWidth: .infinity)
@@ -65,10 +75,19 @@ struct EditMemoView: View {
             .padding()
         }// VStack
     }// body
-}
 
-// struct EditMemoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EditMemoView()
-//    }
-// }
+     private func saveMemo() {
+         memo.content = content
+         memo.date = date
+         // 保存しとく
+         try? context.save()
+         // シート閉じる
+         presentation.wrappedValue.dismiss()
+     }// saveMemo
+}// EditMemoView
+
+ struct EditMemoView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditMemoView(memo: Memo())
+    }
+ }

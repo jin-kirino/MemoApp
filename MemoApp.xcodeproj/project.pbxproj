@@ -15,6 +15,8 @@
 		FF4751FF288CC002000C1A08 /* AddMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751FE288CC002000C1A08 /* AddMemoView.swift */; };
 		FF4752272894C4F9000C1A08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4752262894C4F9000C1A08 /* Assets.xcassets */; };
 		FF4752292894CB32000C1A08 /* EditMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4752282894CB32000C1A08 /* EditMemoView.swift */; };
+		FF47529428AA1C46000C1A08 /* Memo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47529228AA1C46000C1A08 /* Memo+CoreDataClass.swift */; };
+		FF47529528AA1C46000C1A08 /* Memo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF47529328AA1C46000C1A08 /* Memo+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		FF4751FE288CC002000C1A08 /* AddMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemoView.swift; sourceTree = "<group>"; };
 		FF4752262894C4F9000C1A08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF4752282894CB32000C1A08 /* EditMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoView.swift; sourceTree = "<group>"; };
+		FF47529228AA1C46000C1A08 /* Memo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		FF47529328AA1C46000C1A08 /* Memo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Memo+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,8 @@
 		FF4751C82888DBB9000C1A08 /* MemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				FF47529228AA1C46000C1A08 /* Memo+CoreDataClass.swift */,
+				FF47529328AA1C46000C1A08 /* Memo+CoreDataProperties.swift */,
 				FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */,
 				FF4751CB2888DBB9000C1A08 /* ContentView.swift */,
 				FF4751D22888DBBC000C1A08 /* Persistence.swift */,
@@ -179,8 +185,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4751D32888DBBC000C1A08 /* Persistence.swift in Sources */,
+				FF47529528AA1C46000C1A08 /* Memo+CoreDataProperties.swift in Sources */,
 				FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */,
 				FF4751FF288CC002000C1A08 /* AddMemoView.swift in Sources */,
+				FF47529428AA1C46000C1A08 /* Memo+CoreDataClass.swift in Sources */,
 				FF4752292894CB32000C1A08 /* EditMemoView.swift in Sources */,
 				FF4751CA2888DBB9000C1A08 /* MemoAppApp.swift in Sources */,
 				FF4751D62888DBBC000C1A08 /* MemoApp.xcdatamodeld in Sources */,

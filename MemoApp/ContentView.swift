@@ -8,40 +8,38 @@
 import SwiftUI
 import CoreData
 
-// メモの内容と日付を保持する構造体
-struct Memo: Identifiable {
-    let id = UUID()
-    var memo: String?
-    var date: Date?
-}
-
 struct ContentView: View {
+    // 被管理オブジェクトコンテキスト（ManagedObjectContext）の取得
+    @Environment(\.managedObjectContext) private var context
+    // データの取得
+    @FetchRequest(
+        entity: Memo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: false)],
+        animation: .default
+    ) private var fetchedMemoList: FetchedResults<Memo>
 
-    // Memo構造体をまとめる配列
-    @State private var memos: [Memo] = []
+//    // Memo構造体をまとめる配列
+//    @State private var memos: [Memo] = []
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // EditMemoViewを管理
     @State private var editMemoView: Bool = false
-    // 一旦メモの内容
-    @State private var newMemo: String = ""
-    // すでにリストにあるメモ内容を管理
-    @State private var editMemo: String = ""
-    // リストの日付を格納
-    @State private var editDate: Date = Date()
+//    // 一旦メモの内容
+//    @State private var newMemo: String = ""
+//    // すでにリストにあるメモ内容を管理
+//    @State private var editMemo: String = ""
+//    // リストの日付を格納
+//    @State private var editDate: Date = Date()
     // Buttonのグラデーションの配色の設定
     private let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
-    
-
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        // 背景に黒を指定
+        // 背景に白を指定
         appearance.backgroundColor = .white
-        // 文字色に白を指定
+        // 文字色に黒を指定
         appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
         UINavigationBar.appearance().standardAppearance = appearance
@@ -51,55 +49,44 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                if memos.isEmpty {
-                    ZStack {
-                        // 自作のグレー
-                        Color("backgroundColor")
-                            .ignoresSafeArea()
-                        Text("なし")
-                            .font(.title)
-                            .fontWeight(.bold)
-                    }
+                if fetchedMemoList.isEmpty {
+                    Text("なし")
+                        .font(.title)
+                        .fontWeight(.bold)
                 } else {
                     List {
-//                        List(memos.indices) { memo in
-//                            Button {
-//                              editMemoView.toggle()
-//                            } label: {
-//                                VStack {
-//                                    Text(Memo.memo)
-//                                    Text(Memo.date, style: .date)
-//                                }
-//                            }
-//                            .sheet(isPresented: $editMemoView) {
-//                                 EditMemoView(editMemo: $memos[memo])
-//                            }// sheet
-                        ForEach(memos, id: \.self) { memo in
+                        ForEach(fetchedMemoList) { memo in
                             Button {
-                                print("\(memo)")
                                 editMemoView.toggle()
-                                editMemo = memo
                             } label: {
-                                Text("\(memo)")
+                                VStack {
+                                    Text("\(memo.content!)")
+                                    Text("\(memo.date!)")
+                                }
                             }
                             .sheet(isPresented: $editMemoView) {
-                                EditMemoView(memos: $memos, editMemo: $editMemo)
-                            }// sheet
+                                EditMemoView(memo: memo)
+                            }
+                            VStack {
+                                Text(memo.content ?? "")
+                                    .font(.title)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .lineLimit(2)
+                                Text(memo.stringDateAt)
+                                    .font(.caption)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .lineLimit(1)
+                            }// VStack
                         }// ForEach
-                        .onDelete(perform: removeRows)
+                        .onDelete(perform: deleteMemo)
                     }// List
-                    .listStyle(.plain)
-                    .toolbar {
-                        EditButton()
-                    }
-                }// if else
+                }// if-else
                 VStack {
                     Spacer()
                     HStack {
                         Spacer()
                         Button {
-                            print("追加画面")
-                            // AddMemoViewを表示
+                            // addMemoViewを表示
                             addMemoView.toggle()
                         } label: {
                             Image(systemName: "plus")
@@ -112,7 +99,7 @@ struct ContentView: View {
                         .padding(.trailing, 20.0)
                         .padding(.bottom, 10.0)
                         .sheet(isPresented: $addMemoView) {
-                            AddMemoView(memos: $memos)
+                            AddMemoView()
                         }// sheet
                     }// HStack
                 }// VStack
@@ -121,10 +108,13 @@ struct ContentView: View {
         }// NagvigationView
     }// body
 
-    // 行を削除する関数
-    func removeRows(at offsets: IndexSet) {
-        memos.remove(atOffsets: offsets)
-    }// removeRows
+    private func deleteMemo(offsets: IndexSet) {
+        offsets.forEach { index in
+            context.delete(fetchedMemoList[index])
+        }
+        // 保存しておく
+        try? context.save()
+    }// deleteMemo
 }// ContentView
 
 struct ContentView_Previews: PreviewProvider {
