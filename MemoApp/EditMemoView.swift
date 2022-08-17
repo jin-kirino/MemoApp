@@ -9,7 +9,7 @@
 
  struct EditMemoView: View {
      @Environment(\.managedObjectContext) private var context
-     @Environment(\.presentationMode) var presentation
+     @Environment(\.dismiss) var dismiss
      @State private var content: String
      @State private var date: Date
      private var memo: Memo
@@ -74,7 +74,7 @@
          // 保存しとく
          try? context.save()
          // シート閉じる
-         presentation.wrappedValue.dismiss()
+         dismiss()
      }// saveMemo
 }// EditMemoView
 
