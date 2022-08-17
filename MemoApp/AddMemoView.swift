@@ -12,14 +12,7 @@ import SwiftUI
      @Environment(\.dismiss) var dismiss
      @State private var content: String = ""
      @State private var date: Date = Date()
-//    // ContentViewに渡す配列
-//    @Binding var memos: [Memo]
-//    // TextEditorの内容
-//    @State var newMemo: String = ""
-//    // DatePickerの管理
-//    @State private var slectionDate = Date()
-    // 環境変数の取得
-//    @Environment(\.dismiss) private var dismiss
+
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
