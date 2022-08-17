@@ -9,7 +9,7 @@ import SwiftUI
 
  struct AddMemoView: View {
      @Environment(\.managedObjectContext) private var context
-     @Environment(\.presentationMode) var presentation
+     @Environment(\.dismiss) var dismiss
      @State private var content: String = ""
      @State private var date: Date = Date()
 //    // ContentViewに渡す配列
@@ -72,7 +72,7 @@ import SwiftUI
 
          try? context.save()
 
-         presentation.wrappedValue.dismiss()
+         dismiss()
      }
 }// AddMemoView
 
