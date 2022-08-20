@@ -10,16 +10,16 @@
  struct EditMemoView: View {
      @Environment(\.managedObjectContext) private var context
      @Environment(\.dismiss) var dismiss
-     @State private var content: String
-     @State private var date: Date
-     private var memo: Memo
+     @State var content: String = ""
+     @State var date: Date = Date()
+     var memo: Memo
 
-     // イニシャライザ
-     init(memo: Memo, content: String, date: Date) {
-         self.memo = memo
-         _content = State(initialValue: content)
-         _date = State(initialValue: date)
-     }
+//     // イニシャライザ
+//     init(memo: Memo, content: String, date: Date) {
+//         self.memo = memo
+//         _content = State(initialValue: content)
+//         _date = State(initialValue: date)
+//     }
 
     // Buttonのグラデーションの配色の設定
     private let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
@@ -66,6 +66,10 @@
             }// Button
             .padding()
         }// VStack
+        .onAppear {
+            content = memo.content ?? ""
+            date = memo.date ?? Date()
+        }// .onApper
     }// body
 
      private func saveMemo() {

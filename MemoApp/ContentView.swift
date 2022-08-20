@@ -20,7 +20,7 @@ struct ContentView: View {
     // AddMemoViewを管理
     @State private var addMemoView: Bool = false
     // EditMemoViewを管理
-    @State private var editMemoView: Bool = false
+//    @State private var editMemoView: Bool = false
     // Buttonのグラデーションの配色の設定
     private let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -48,7 +48,7 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(fetchedMemoList) { memo in
-                            NavigationLink(destination: EditMemoView(memo: memo, content: memo.content ?? "", date: memo.date ?? Date())) {
+                            NavigationLink(destination: EditMemoView(memo: memo)) {
                                 VStack {
                                     Text(memo.content ?? "")
                                         .font(.title)
