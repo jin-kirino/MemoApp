@@ -21,14 +21,14 @@ extension Memo {
 }
 
 extension Memo: Identifiable {
-    public var stringDateAt: String { dateFormatter(date: date ?? Date())}
 
-    func dateFormatter(date: Date) -> String {
+    public var stringDateAt: String {
+        // DateFormatterのインスタンス化
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
-
-        return dateFormatter.string(from: date)
+        return dateFormatter.string(from: date ?? Date())
     }
 }
