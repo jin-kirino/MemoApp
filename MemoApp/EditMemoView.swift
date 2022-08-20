@@ -14,6 +14,12 @@
      @State var date: Date = Date()
      var memo: Memo
 
+     // イニシャライザ
+     init(memo: Memo) {
+         self.memo = memo
+         _content = State(initialValue: memo.content ?? "")
+         _date = State(initialValue: memo.date ?? Date())
+     }
     // Buttonのグラデーションの配色の設定
     private let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
@@ -59,10 +65,6 @@
             }// Button
             .padding()
         }// VStack
-        .onAppear {
-            content = memo.content ?? ""
-            date = memo.date ?? Date()
-        }// .onApper
     }// body
 
      private func saveMemo() {
