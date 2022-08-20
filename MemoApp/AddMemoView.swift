@@ -66,7 +66,7 @@ import SwiftUI
          try? context.save()
 
          dismiss()
-     }
+     }// addMemo
 }// AddMemoView
 
  struct AddMemoView_Previews: PreviewProvider {

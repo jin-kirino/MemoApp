@@ -61,7 +61,10 @@ struct ContentView: View {
                                 }// VStack
                             }// NavigationLink
                         }// ForEach
-                        .onDelete(perform: deleteMemo)
+//                        .onDelete(perform: deleteMemo)
+                        .onDelete { indexSet in
+                            deleteMemo(offsets: indexSet)
+                        }
                     }// List
                 }// if-else
                 VStack {

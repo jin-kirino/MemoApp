@@ -14,13 +14,6 @@
      @State var date: Date = Date()
      var memo: Memo
 
-//     // イニシャライザ
-//     init(memo: Memo, content: String, date: Date) {
-//         self.memo = memo
-//         _content = State(initialValue: content)
-//         _date = State(initialValue: date)
-//     }
-
     // Buttonのグラデーションの配色の設定
     private let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
 
