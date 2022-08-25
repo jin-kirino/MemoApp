@@ -60,7 +60,6 @@ struct ContentView: View {
                                 }// VStack
                             }// Button
                         }// ForEach
-//                        .onDelete(perform: deleteMemo)
                         .onDelete { indexSet in
                             deleteMemo(offsets: indexSet)
                         }
@@ -92,11 +91,11 @@ struct ContentView: View {
             .navigationTitle("メモの一覧")
         }// NagvigationView
     }// body
-
+    // メモ削除メソッド
     private func deleteMemo(offsets: IndexSet) {
         offsets.forEach { index in
             context.delete(fetchedMemoList[index])
-        }
+        }// forEach
         // 保存しておく
         try? context.save()
     }// deleteMemo

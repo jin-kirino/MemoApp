@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct NewMemoView: View {
-
+    // 被管理オブジェクトコンテキスト（ManagedObjectContext）の取得
     @ObservedObject var viewModel: HomeViewModel
+    // データの取得
     @Environment(\.managedObjectContext) var context
     // Buttonのグラデーションの配色の設定
     let graddientView = LinearGradient(gradient: Gradient(colors: [.black, .blue, .green]), startPoint: .leading, endPoint: .trailing)
@@ -56,11 +57,5 @@ struct NewMemoView: View {
             }// Button
             .padding()
         }// VStack
-    }
-}
-
-// struct NewMemoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NewMemoView()
-//    }
-// }
+    }// body
+}// NewMemoView

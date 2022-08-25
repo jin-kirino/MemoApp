@@ -45,23 +45,22 @@ class HomeViewModel: ObservableObject {
         newMemo.content = content
         // 日付を格納
         newMemo.date = date
-
+        // エラー処理
         do {
             try context.save()
             isNewData.toggle()
             content = ""
             date = Date()
-
         } catch {
             print(error.localizedDescription)
-        }
+        }// do-catch
     }// writeMemo
-
+    // メモ編集
     func editMemo(editMemo: Memo) {
+        // そのリストを指定
         memo = editMemo
-
         content = editMemo.content!
         date = editMemo.date!
         isNewData.toggle()
-    }// EditMemo
+    }// editMemo
 }// HomeViewModel
