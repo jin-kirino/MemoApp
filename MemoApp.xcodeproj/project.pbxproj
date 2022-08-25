@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF3D247128B2138D00E382BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D247028B2138D00E382BC /* HomeViewModel.swift */; };
+		FF3D24B528B73A0600E382BC /* NewMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D24B428B73A0600E382BC /* NewMemoView.swift */; };
 		FF4751CA2888DBB9000C1A08 /* MemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */; };
 		FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751CB2888DBB9000C1A08 /* ContentView.swift */; };
 		FF4751D12888DBBC000C1A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4751D02888DBBC000C1A08 /* Preview Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF3D247028B2138D00E382BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		FF3D24B428B73A0600E382BC /* NewMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoView.swift; sourceTree = "<group>"; };
 		FF4751C62888DBB9000C1A08 /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAppApp.swift; sourceTree = "<group>"; };
 		FF4751CB2888DBB9000C1A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF3D246F28B2136700E382BC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D247028B2138D00E382BC /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		FF4751BD2888DBB9000C1A08 = {
 			isa = PBXGroup;
 			children = (
@@ -70,8 +82,10 @@
 				FF4751D22888DBBC000C1A08 /* Persistence.swift */,
 				FF4751FE288CC002000C1A08 /* AddMemoView.swift */,
 				FF4752282894CB32000C1A08 /* EditMemoView.swift */,
+				FF3D24B428B73A0600E382BC /* NewMemoView.swift */,
 				FF4751D42888DBBC000C1A08 /* MemoApp.xcdatamodeld */,
 				FF4752262894C4F9000C1A08 /* Assets.xcassets */,
+				FF3D246F28B2136700E382BC /* ViewModel */,
 				FF4751CF2888DBBC000C1A08 /* Preview Content */,
 			);
 			path = MemoApp;
@@ -185,8 +199,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4751D32888DBBC000C1A08 /* Persistence.swift in Sources */,
+				FF3D247128B2138D00E382BC /* HomeViewModel.swift in Sources */,
 				FF47529528AA1C46000C1A08 /* Memo+CoreDataProperties.swift in Sources */,
 				FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */,
+				FF3D24B528B73A0600E382BC /* NewMemoView.swift in Sources */,
 				FF4751FF288CC002000C1A08 /* AddMemoView.swift in Sources */,
 				FF47529428AA1C46000C1A08 /* Memo+CoreDataClass.swift in Sources */,
 				FF4752292894CB32000C1A08 /* EditMemoView.swift in Sources */,

@@ -16,11 +16,8 @@ struct ContentView: View {
         entity: Memo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Memo.date, ascending: false)],
         animation: .default
     ) private var fetchedMemoList: FetchedResults<Memo>
-
-    // AddMemoViewを管理
-    @State private var addMemoView: Bool = false
-    // EditMemoViewを管理
-//    @State private var editMemoView: Bool = false
+    // HomeViewModelのデータを定義
+    @StateObject var viewModel = HomeViewModel()
     // Buttonのグラデーションの配色の設定
     private let graddientView = AngularGradient(
         gradient: Gradient(colors: [.black, .blue, .green]), center: .center)
@@ -48,7 +45,9 @@ struct ContentView: View {
                 } else {
                     List {
                         ForEach(fetchedMemoList) { memo in
-                            NavigationLink(destination: EditMemoView(memo: memo)) {
+                            Button {
+                                viewModel.editMemo(editMemo: memo)
+                            } label: {
                                 VStack {
                                     Text(memo.content ?? "")
                                         .font(.title)
@@ -59,7 +58,7 @@ struct ContentView: View {
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .lineLimit(1)
                                 }// VStack
-                            }// NavigationLink
+                            }// Button
                         }// ForEach
 //                        .onDelete(perform: deleteMemo)
                         .onDelete { indexSet in
@@ -73,7 +72,7 @@ struct ContentView: View {
                         Spacer()
                         Button {
                             // addMemoViewを表示
-                            addMemoView.toggle()
+                            viewModel.isNewData.toggle()
                         } label: {
                             Image(systemName: "plus")
                                 .frame(width: 70, height: 70)
@@ -84,8 +83,8 @@ struct ContentView: View {
                         }// Button
                         .padding(.trailing, 20.0)
                         .padding(.bottom, 10.0)
-                        .sheet(isPresented: $addMemoView) {
-                            AddMemoView()
+                        .sheet(isPresented: $viewModel.isNewData) {
+                            NewMemoView(viewModel: viewModel)
                         }// sheet
                     }// HStack
                 }// VStack
