@@ -48,7 +48,7 @@ struct NewMemoView: View {
                 // 編集した内容を初期画面に表示
                 viewModel.writeMemo(context: context)
             } label: {
-                Text("＋ 追加")
+                Label("追加", systemImage: "plus")
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
                     .foregroundColor(.white)
