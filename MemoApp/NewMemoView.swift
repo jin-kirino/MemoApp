@@ -18,7 +18,7 @@ struct NewMemoView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("メモの追加")
+                Text(viewModel.memo == nil ? "メモの追加" : "メモの編集")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .multilineTextAlignment(.trailing)
@@ -48,7 +48,7 @@ struct NewMemoView: View {
                 // 編集した内容を初期画面に表示
                 viewModel.writeMemo(context: context)
             } label: {
-                Label("追加", systemImage: "plus")
+                Label(viewModel.memo == nil ? "追加" : "編集", systemImage: "plus")
                     .frame(maxWidth: .infinity)
                     .frame(height: 50)
                     .foregroundColor(.white)
