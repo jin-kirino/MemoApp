@@ -46,6 +46,7 @@ struct ContentView: View {
                     List {
                         ForEach(fetchedMemoList) { memo in
                             Button {
+                                // NewMemoViewを表示（編集バージョン）
                                 viewModel.editMemo(editMemo: memo)
                             } label: {
                                 VStack {
@@ -62,7 +63,7 @@ struct ContentView: View {
                         }// ForEach
                         .onDelete { indexSet in
                             deleteMemo(offsets: indexSet)
-                        }
+                        }// onDelete
                     }// List
                 }// if-else
                 VStack {
@@ -70,7 +71,7 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         Button {
-                            // addMemoViewを表示
+                            // NewMemoViewを表示(追加バージョン)
                             viewModel.isNewData.toggle()
                         } label: {
                             Image(systemName: "plus")
