@@ -30,8 +30,6 @@ class HomeViewModel: ObservableObject {
         } else {
             memo.content = content
             memo.date = date
-            // 編集したデータを一旦保存＆nil
-            try? context.save()
             memo = nil
         }
         // 保存、シート表示、初期化はどっちも一緒
