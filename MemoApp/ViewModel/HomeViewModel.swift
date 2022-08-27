@@ -14,10 +14,10 @@ class HomeViewModel: ObservableObject {
     @Published var content: String = ""
     // 日付を格納する変数
     @Published var date: Date = Date()
-    // テーブルを管理
-    @Published var memo: Memo!
     // 追加・編集シートを管理
     @Published var isNewData = false
+    // テーブルを管理
+    var memo: Memo!
 
     // CoreDataにメモ内容を保存
     func writeMemo(context: NSManagedObjectContext) {
