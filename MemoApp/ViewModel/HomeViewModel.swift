@@ -21,23 +21,21 @@ class HomeViewModel: ObservableObject {
 
     // CoreDataにメモ内容を保存
     func writeMemo(context: NSManagedObjectContext) {
-        // memoがnilなら追加
+        // 新規の動作、値を代入
         if memo == nil {
-            let newMemo = Memo(context: context)
-            newMemo.content = content
-            newMemo.date = date
-        // それ以外は編集
-        } else {
-            memo.content = content
-            memo.date = date
-            memo = nil
+            memo = Memo(context: context)
         }
+        // メモ内容追加
+        memo.content = content
+        // 日付追加
+        memo.date = date
         // 保存、シート表示、初期化はどっちも一緒
         do {
             try context.save()
             isNewData.toggle()
             content = ""
             date = Date()
+            memo = nil
         } catch {
             print(error.localizedDescription)
         }// do-catch
