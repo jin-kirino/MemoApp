@@ -13,9 +13,8 @@ struct NewMemoView: View {
     // データの取得
     @Environment(\.managedObjectContext) var context
     // Buttonのグラデーションの配色の設定
-    static let startColor = Color("startVolor")
-    static let finishColor = Color("finishColor")
-    private let graddientView = LinearGradient(gradient: Gradient(colors: [Color("startColor"), Color("finishColor")]), startPoint: .leading, endPoint: .trailing)
+
+    private let graddientView = LinearGradient(gradient: Gradient(colors: [Color(UIColor.startColor), Color(UIColor.finishColor)]), startPoint: .leading, endPoint: .trailing)
 
     var body: some View {
         VStack {

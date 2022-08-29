@@ -22,7 +22,7 @@ struct ContentView: View {
     static let startColor = Color("startVolor")
     static let finishColor = Color("finishColor")
     private let graddientView = AngularGradient(
-        gradient: Gradient(colors: [Color("startColor"), Color("finishColor")]), center: .center)
+        gradient: Gradient(colors: [Color(UIColor.startColor), Color(UIColor.finishColor)]), center: .center)
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
