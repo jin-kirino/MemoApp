@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		FF3D247128B2138D00E382BC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D247028B2138D00E382BC /* HomeViewModel.swift */; };
 		FF3D24B528B73A0600E382BC /* NewMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D24B428B73A0600E382BC /* NewMemoView.swift */; };
-		FF3D24B928BBAA0900E382BC /* ButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D24B828BBAA0900E382BC /* ButtonColor.swift */; };
+		FF3D24B928BBAA0900E382BC /* CustomButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3D24B828BBAA0900E382BC /* CustomButtonExtension.swift */; };
 		FF4751CA2888DBB9000C1A08 /* MemoAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */; };
 		FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4751CB2888DBB9000C1A08 /* ContentView.swift */; };
 		FF4751D12888DBBC000C1A08 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF4751D02888DBBC000C1A08 /* Preview Assets.xcassets */; };
@@ -23,7 +23,7 @@
 /* Begin PBXFileReference section */
 		FF3D247028B2138D00E382BC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		FF3D24B428B73A0600E382BC /* NewMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMemoView.swift; sourceTree = "<group>"; };
-		FF3D24B828BBAA0900E382BC /* ButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonColor.swift; sourceTree = "<group>"; };
+		FF3D24B828BBAA0900E382BC /* CustomButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonExtension.swift; sourceTree = "<group>"; };
 		FF4751C62888DBB9000C1A08 /* MemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF4751C92888DBB9000C1A08 /* MemoAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAppApp.swift; sourceTree = "<group>"; };
 		FF4751CB2888DBB9000C1A08 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				FF4751CB2888DBB9000C1A08 /* ContentView.swift */,
 				FF4751D22888DBBC000C1A08 /* Persistence.swift */,
 				FF3D24B428B73A0600E382BC /* NewMemoView.swift */,
-				FF3D24B828BBAA0900E382BC /* ButtonColor.swift */,
+				FF3D24B828BBAA0900E382BC /* CustomButtonExtension.swift */,
 				FF4751D42888DBBC000C1A08 /* MemoApp.xcdatamodeld */,
 				FF4752262894C4F9000C1A08 /* Assets.xcassets */,
 				FF3D246F28B2136700E382BC /* ViewModel */,
@@ -196,7 +196,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF4751D32888DBBC000C1A08 /* Persistence.swift in Sources */,
-				FF3D24B928BBAA0900E382BC /* ButtonColor.swift in Sources */,
+				FF3D24B928BBAA0900E382BC /* CustomButtonExtension.swift in Sources */,
 				FF3D247128B2138D00E382BC /* HomeViewModel.swift in Sources */,
 				FF47529528AA1C46000C1A08 /* Memo+CoreDataProperties.swift in Sources */,
 				FF4751CC2888DBB9000C1A08 /* ContentView.swift in Sources */,
