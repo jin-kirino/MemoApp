@@ -19,8 +19,8 @@ struct ContentView: View {
     // HomeViewModelのデータを定義
     @StateObject var viewModel = HomeViewModel()
     // Buttonのグラデーションの配色の設定
-    private let graddientView = AngularGradient(
-        gradient: Gradient(colors: [Color.startColor, Color.finishColor]), center: .center)
+    private let gradationView = AngularGradient(
+        gradient: Gradient(colors: [.startColor, .finishColor]), center: .center)
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ
@@ -77,7 +77,7 @@ struct ContentView: View {
                             Image(systemName: "plus")
                                 .frame(width: 70, height: 70)
                                 .imageScale(.large)
-                                .background(graddientView)
+                                .background(gradationView)
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                         }// Button
