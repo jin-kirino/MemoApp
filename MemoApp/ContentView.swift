@@ -20,7 +20,7 @@ struct ContentView: View {
     @StateObject var viewModel = HomeViewModel()
     // Buttonのグラデーションの配色の設定
     private let gradationView = AngularGradient(
-        gradient: Gradient(colors: [.customBlue, .customGreen]), center: .center)
+        gradient: Gradient(colors: [.gradationFrom, .gradationTo]), center: .center)
 
     init() {
         // UINavigationBarAppearanceを使ってnavigationTitleをカスタマイズ

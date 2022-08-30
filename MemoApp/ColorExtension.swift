@@ -9,6 +9,6 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let customBlue = Color("customBlue")
-    static let customGreen = Color("customGreen")
+    static let gradationFrom = Color("custonBlue")
+    static let gradationTo = Color("customGreen")
 }
