@@ -39,21 +39,27 @@ struct ContentView: View {
         NavigationView {
             ZStack {
                 if fetchedMemoList.isEmpty {
+                    // もしデータがなかったら「なし」
                     Text("なし")
                         .font(.title)
                         .fontWeight(.bold)
                 } else {
+                    // データがあったらリストに表示
                     List {
+                        // コアデータ内のデータを一つずつmemoで取り出す
                         ForEach(fetchedMemoList) { memo in
+                            // ボタンの機能をつける
                             Button {
                                 // NewMemoViewを表示（編集バージョン）
                                 viewModel.editMemo(editMemo: memo)
                             } label: {
                                 VStack {
+                                    // メモの内容
                                     Text(memo.content ?? "")
                                         .font(.title)
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         .lineLimit(2)
+                                    // メモの日付
                                     Text(memo.stringDateAt)
                                         .font(.caption)
                                         .frame(maxWidth: .infinity, alignment: .leading)
